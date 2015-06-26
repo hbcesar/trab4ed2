@@ -7,7 +7,7 @@ void lerEntrada(Job* entrada, int n){
 
 	for(i=0; i<n; i++){
 		scanf("%d %d %d", &tempo, &deadline, &multa);
-		entrada[i]=inicializarJob(tempo, deadline, multa);
+		entrada[i]=inicializarJob(i, tempo, deadline, multa);
 	}
 }
 
