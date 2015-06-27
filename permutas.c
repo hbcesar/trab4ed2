@@ -1,18 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-struct permuta {
-	Job* a_pos;
-	Job* posicionados;
-	float lowerbound;
-	float upperbound;
-	int tempoDecorrido;
-	int qtdePosicionados;
-	int qtdeNaoPosicionados;
-	struct permuta* proximo;
-}
-
-typedef struct permuta Permuta;
+#include "permuta.h"
 
 Permuta* inicializaPermuta(int n){
 	Permuta* novo = (Permuta*)malloc(sizeof(Permuta));

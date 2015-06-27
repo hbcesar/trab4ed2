@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "permuta.h"
+#include "job.h"
+#include "bb.h"
 
 void lerEntrada(Job* entrada, int n){
 	int i;

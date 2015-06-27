@@ -1,0 +1,1 @@
+Permuta* branchAndBound(Permuta* lista, int n);
