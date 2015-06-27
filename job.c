@@ -6,7 +6,6 @@ struct job {
 	int tproc;
 	int deadline;
 	int multa;
-	struct job* proximo;
 }
 
 typedef struct job Job;
@@ -22,7 +21,9 @@ Job* inicializarJob(int id, int tproc, int deadline, int multa){
 	return novo;
 }
 
-Job* copiarJob(Job* origem){
-	return inicializarJob(origem->id, origem->tproc, origem->deadline, origem->multa);
-}
+// Job* copiarJob(Job* origem){
+// 	return inicializarJob(origem->id, origem->tproc, origem->deadline, origem->multa);
+// }
+
+
 
