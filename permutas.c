@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include "permuta.h"
 
+Lista* alocaLista(){
+	Lista* novo = (Lista*)malloc(sizeof(Lista));
+
+	novo->primeiro = NULL;
+	novo->ultimo = NULL;
+	novo->tamanho = 0;
+
+	return novo;
+}
 
 Permuta* inicializaPermuta(int n){
 	Permuta* novo = (Permuta*)malloc(sizeof(Permuta));
@@ -38,8 +47,6 @@ Permuta* gerarRaiz(Job** entrada, int n){
 		primeira->a_pos[i] = entrada[i];
 		primeira->upperbound += entrada[i]->multa;
 	}
-
-	free(entrada);
 
 	return primeira;
 }
@@ -104,14 +111,42 @@ Permuta* criarFilho(Permuta* p, int n, int k){
 }
 
 //insere lista de permutas ordenada pelo upper bound
-Permuta* inserir(Permuta* lista, Permuta* p){
+Lista* inserir(Lista* lista, Permuta* p){
 	Permuta* frente = NULL;
 	Permuta* tras = NULL;
 
-	if(lista == NULL){
-		lista = p;
+	// if(lista->primeiro == NULL){
+	// 	lista->primeiro = p;
+	// 	lista->ultimo = p;
+	// } else {
+	// 	if(p->lowerbound <= lista->primeiro->lowerbound){
+	// 		//caso o elemento deva ser inserido na primeira posicao
+	// 		p->proximo = lista->primeiro;
+	// 		lista->primeiro = p;
+	// 	} else if (p->lowerbound >= lista->ultimo->lowerbound){
+	// 		//caso o elemento deva ser inserido na ultima posicao
+	// 		p->proximo = lista->ultimo;
+	// 		// lista->ultimo->proximo = p;
+	// 		// lista->ultimo = p;
+	// 	} else {
+	// 		//caso nao seja nem o ultimo ou o primeiro, procura posicao correta
+	// 		frente = lista->primeiro;
+
+	// 		while((frente != NULL) && (frente->lowerbound < p->lowerbound)){
+	// 			tras = frente;
+	// 			frente = frente->proximo;
+	// 		}
+
+	// 		tras->proximo = p;
+	// 		p->proximo = frente;
+	// 	}
+	// }
+
+	if(lista->primeiro == NULL){
+		lista->primeiro = p;
+		lista->ultimo = p;
 	} else {
-		frente = lista;
+		frente = lista->primeiro;
 
 		while((frente != NULL) && (frente->lowerbound < p->lowerbound)){
 			tras = frente;
@@ -119,16 +154,18 @@ Permuta* inserir(Permuta* lista, Permuta* p){
 		}
 
 		if(tras == NULL){
-			p->proximo = lista;
-			lista = p;
+			p->proximo = lista->primeiro;
+			lista->primeiro = p;
 		} else if (frente == NULL){
 			tras->proximo = p;
+			lista->ultimo = p;
 		} else {
 			tras->proximo = p;
 			p->proximo = frente;
 		}
 	}
 
+	lista->tamanho++;
 	return lista;
 }
 
@@ -181,8 +218,8 @@ void imprimir(Permuta* p){
 
 void liberarPermuta(Permuta* p){
 	if(p!=NULL){
-		free(p->a_pos);
-		free(p->posicionados);
+		// free(p->a_pos);
+		// free(p->posicionados);
 		free(p);
 	}
 }

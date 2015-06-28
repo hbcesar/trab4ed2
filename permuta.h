@@ -20,11 +20,20 @@ struct permuta {
 
 typedef struct permuta Permuta;
 
+struct lista{
+	Permuta* primeiro;
+	Permuta* ultimo;
+	int tamanho;
+};
+
+typedef struct lista Lista;
+
 Job* inicializarJob(int id, int tproc, int deadline, int multa);
 Permuta* inicializaPermuta(int n);
+Lista* alocaLista();
 Permuta* gerarRaiz(Job** entrada, int n);
 Permuta* criarFilho(Permuta* p, int n, int k);
-Permuta* inserir(Permuta* lista, Permuta* p);
+Lista* inserir(Lista* lista, Permuta* p);
 int eFolha(Permuta* p);
 void imprimirEntrada(Job** entrada, int n);
 void imprimirResposta(Permuta* p, int n);
