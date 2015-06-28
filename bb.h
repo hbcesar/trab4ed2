@@ -1,1 +1,1 @@
-Permuta* branchAndBound(Permuta* lista, int n);
+Permuta* branchAndBound(Job** entrada, int limite, int n);

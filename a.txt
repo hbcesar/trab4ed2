@@ -1,0 +1,2 @@
+gcc -c bb.c
+gcc -c job.c

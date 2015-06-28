@@ -1,8 +1,17 @@
+struct job {
+	int id;
+	int tproc;
+	int deadline;
+	int multa;
+};
+
+typedef struct job Job;
+
 struct permuta {
-	Job* a_pos;
-	Job* posicionados;
-	float lowerbound;
-	float upperbound;
+	Job** a_pos;
+	Job** posicionados;
+	int lowerbound;
+	int upperbound;
 	int tempoDecorrido;
 	int qtdePosicionados;
 	int qtdeNaoPosicionados;
@@ -11,9 +20,12 @@ struct permuta {
 
 typedef struct permuta Permuta;
 
-void adicionarPosicionado(Permuta* p, Job* job);
-void copiarPermuta(Permuta* origem, Permuta* destino, int k);
+Job* inicializarJob(int id, int tproc, int deadline, int multa);
+Permuta* inicializaPermuta(int n);
+Permuta* gerarRaiz(Job** entrada, int n);
 Permuta* criarFilho(Permuta* p, int n, int k);
 Permuta* inserir(Permuta* lista, Permuta* p);
-float obterCusto(Permuta* p);
 int eFolha(Permuta* p);
+void imprimirEntrada(Job** entrada, int n);
+void imprimirResposta(Permuta* p, int n);
+void imprimir(Permuta* p);
