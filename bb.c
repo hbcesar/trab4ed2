@@ -18,8 +18,6 @@ Permuta* branchAndBound(Job** entrada, int limite, int n){
 	int limiteUB = limite;
 	int i;
 
-	printf("Limite: %d\n", limiteUB);
-
 	while(lista->primeiro != NULL){
 		//retira o primeiro elemento da lista para gerar seus filhos
 		item = lista->primeiro;
