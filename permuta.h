@@ -29,3 +29,4 @@ int eFolha(Permuta* p);
 void imprimirEntrada(Job** entrada, int n);
 void imprimirResposta(Permuta* p, int n);
 void imprimir(Permuta* p);
+void liberarPermuta(Permuta* p);

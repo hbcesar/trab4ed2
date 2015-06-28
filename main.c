@@ -34,6 +34,16 @@ Permuta* teste(Job** entrada, int n){
 	return teste;
 }
 
+void liberarEntrada(Job** entrada, int n){
+	int i;
+
+	for(i=0; i < n; i++){
+		free(entrada[i]);
+	}
+
+	free(entrada);
+}
+
 int main(int argc, char* argv []){
 	Permuta* p = NULL;
 	Job** entrada = NULL;
@@ -55,6 +65,8 @@ int main(int argc, char* argv []){
 	
 	p = branchAndBound(entrada, p->lowerbound, n);
 	imprimirResposta(p, n);
+
+	//liberarEntrada(entrada, n);
 
 	return 0;
 }

@@ -179,3 +179,11 @@ void imprimir(Permuta* p){
 	printf("\n");
 }
 
+void liberarPermuta(Permuta* p){
+	if(p!=NULL){
+		free(p->a_pos);
+		free(p->posicionados);
+		free(p);
+	}
+}
+
